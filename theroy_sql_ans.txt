@@ -1,0 +1,121 @@
+ Q8)What is the significance of “%” and “_” operators in the LIKE statement?
+ ANS)the LIKE statement is used to search for a specified pattern in a column.
+     1) '%' Operator:The %  represents one or multiple characters in a string.
+   eg: 'g%' - in this it will match the charachter that starts with g and then any no of charachters.
+     2)' _ 'Operator:The _ represents a single character in a string.
+      eg:'g__d'-it matches the character which starts with g and ends with d.
+
+*************************************************************************************************************
+
+Q9) Explain normalization in the context of databases?
+ANS)NORMALIZATION:-
+
+-it is the process of organizing the data in the database.
+-it divides the larger table into smaller and links them using relationships.
+-the normal form is used to reduce redundancy(duplicasey) from the database table.
+-it maintains integrity.
+Integrity:-set of predefined rules that ensure the quality of information stored in a database.
+
+TYPES OF NORMALIZATION:-
+1) 1NF(first normal form):-
+-A relation will be 1NF if it contains an atomic value.
+-It states that an attribute of a table cannot hold multiple values. It must hold only single-valued attribute.
+EX:-Relation EMPLOYEE is not in 1NF because of multi-valued attribute EMP_PHONE.
+
+2)2NF(Second Normal Form):-
+-relation must be in 1NF.
+-all non-key attributes are fully functional dependent on the primary key.
+-in this the table should not depend half on teacher id or subject it should fully depend on only on teacher id.
+-there will be no partial dependency.
+
+3)3NF(Third Normal Form):-
+-A relation will be in 3NF if it is in 2NF and not contain any transitive partial dependency.
+-If there is no transitive dependency for non-prime attributes,then the relation must be in third normal form.
+-there will be no transitive partial dependency.
+
+EX:- EMP_ZIP,EMP_STATE,EMP_CITY.
+EMP_ID,EMP_NAME,EMP_ZIP.
+
+4)BCNF(BOYCE CODD NORMAL FORM):-
+-BCNF is the advance version of 3NF.it is stricter than 3NF.
+-A table is in BCNF if every functional dependency X->Y,X is the super key of the table.
+-For BCNF,the table should be in 3NF.and for every FD.LHS is super key.
+
+EX:- EMP_ID->EMP_COUNTRY.
+EMP_DEPT->{DEPT_TYPE,EMP_DEPT_NO}.
+
+5)4NF(FOURTH NORMAL FORM):-
+-A relation will be in 4NF if it is in boyce codd normal form and has no multi valued dependency.
+-For a dependency A->B ,if for a single value of A ,multiple values of B exists ,then the relation will be a multi-valued dependency.
+
+stu_id |  course   |   hobby
+21     |  computer | dancing         
+21     |  math     | singing
+34     |  chemistry| dancing
+74     |  biology  |  cricket   
+59     |  physics  |  hockey 
+in this the stu_id 21 has 2 course and 2 hobbies so it is multi valued(this should not happen)so we divide it in 2 tables
+
+6)5NF(FIFTH NORMAL FORM):-
+-A relation is in 5NF if it is in 4NF and not contains any join dependency and joining should be lossless.
+-5NF is satisfied when all the tables are broken into as many tables as possible in order to avoid rebundancy.
+-5NF is also known as project-join normal form(PJ/NF).
+
+*******************************************************************************************************************************************
+
+Q11)What do you understand about DDL, DCL, and DML in MySQL? 
+ANS)DDL:-it is said as DATA DEFINATION LANGUAGE.
+   it changes the structure of a table like creating a atble,deleting , altering,etc 
+ here are some commands:-
+-truncate:-it will delete the entire data but the structure will remain the 	  same(truncate table employee)
+-drop:-it will delete the table( drop table emp)
+-create:- create table employee(id int);
+-alter:-alter table emp add(address varchar(50));
+
+ DML:-is said as DATA MANIPULATION LANGUAGE.
+it is used to modify the database.it is responsible for all form of changes.
+inert:-it is used to insert records(rows)
+-UPDATE-it is used to do changes in the data
+-DELETE- it is used to delete the single records(rows)
+  
+DCL:-It is said as DATA CONTROL LANGUAGE. It is used to grant and revoke permissions.
+
+************************************************************************************************************************************************
+Q10)What does a join in MySQL mean? 
+ANS)In SQL, a join is a command clause in the from clause of a query that combines records from two or more tables in a database.
+
+**************************************************************************************************************************************************
+Q12)What is the role of the MySQL JOIN clause in a query, and what are some common types of joins?
+ANS)The role of MySQL JOIN clause in a query is that to join two or more table together in one table.
+There are 5 types of joins:-
+1)INNER JOIN:-
+	a fundamental join operation that combines records from two or more tables based on matching values in a common field.
+eg:-if in a table there is 1,2,4,5 and another table has 1,2,3,4,5,6,7 then it will only return 1,2,4,5 because only these no are there in both tables and 3 is not in one table so it will not come.
+
+2)LEFT JOIN:-
+a type of join also known as left outer join is a type of join operation that returns all records from the left table and any matching records from the right table.
+
+eg : in this there is table one 12345 and another table 2346 then it will first return left side 12345
+and another tables(right side) commen data 234.
+
+3)RIGHT JOIN:-
+a command that returns all rows from the table in the right join clause and only matching rows from the table in the from clause.
+
+4)CROSS JOIN:-
+a cross join is also known as cartesian product join, is a type of join in SQL that combines each row from one table with each row from another table.
+eg:
+table1       table2
+ 1               a
+ 2               b
+
+cross join
+1 a
+1 b
+1 c
+2 a
+2 b
+2 c
+
+5)FULL JOIN:-creates a new table by joining two tables as a whole.
+
+      
